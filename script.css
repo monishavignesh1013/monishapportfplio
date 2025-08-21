@@ -1,0 +1,21 @@
+// Toggle mobile menu
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Smooth scroll for internal links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+    navLinks.classList.remove('open');
+  });
+});
+
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
